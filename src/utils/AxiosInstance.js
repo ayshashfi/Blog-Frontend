@@ -2,7 +2,7 @@ import axios from 'axios';
 import { refreshAccessToken, saveTokens,removeTokens,getRefreshToken } from './auth'; 
 
 const axiosInstance = axios.create({
-  baseURL: 'https://13.61.10.70//api', // Your backend API URL
+  baseURL: 'https://13.61.10.70/api', // Your backend API URL
   headers: {
     "Content-Type": "application/json",
   },
