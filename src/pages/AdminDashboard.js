@@ -16,12 +16,12 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("access_token"); // Get token from storage
-    if (!token) {
-      toast.error("You need to log in first!");
-      navigate("/login"); // Redirect to login page
-      return;
-    }
+    // const token = localStorage.getItem("access_token"); // Get token from storage
+    // if (!token) {
+    //   toast.error("You need to log in first!");
+    //   navigate("/login"); // Redirect to login page
+    //   return;
+    // }
     fetchBlogs();
   }, []);
 
