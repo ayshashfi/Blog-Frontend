@@ -69,6 +69,7 @@ export const logout = () => {
 };
  
 // Refresh access token using the refresh token
+//Uses the refresh token to get a new access token from the backend.
 export const refreshAccessToken = async (refreshToken) => {
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/users/token/refresh/', {

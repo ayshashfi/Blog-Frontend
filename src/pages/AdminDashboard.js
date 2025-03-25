@@ -38,15 +38,41 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await axiosInstance.delete(`blogs/blogs/${id}/`);
-      toast.success("Blog deleted successfully!");
-      fetchBlogs();
-    } catch (error) {
-      toast.error("Failed to delete blog.");
-    }
+  const handleDelete = (id) => {
+    toast(
+      (t) => (
+        <div>
+          <p>Are you sure you want to delete this blog?</p>
+          <div className="flex justify-end gap-2 mt-2">
+            <button
+              className="px-3 py-1 rounded bg-gray-200 text-gray-700 hover:bg-gray-300"
+              onClick={() => toast.dismiss(t)}
+            >
+              Cancel
+            </button>
+            <button
+              className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600"
+              onClick={async () => {
+                try {
+                  await axiosInstance.delete(`blogs/blogs/${id}/`);
+                  toast.success("Blog deleted successfully!");
+                  fetchBlogs();
+                } catch {
+                  toast.error("Failed to delete blog.");
+                } finally {
+                  toast.dismiss(t);
+                }
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      ),
+      { duration: 3000 } // Optional: Auto-dismiss after 5 seconds
+    );
   };
+
 
   const openEditModal = (blog) => {
     setEditingBlog(blog);
@@ -130,11 +156,12 @@ const AdminDashboard = () => {
                   Edit
                 </button>
                 <button
-                  onClick={() => handleDelete(blog.id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
-                >
-                  Delete
-                </button>
+  className="mt-2 px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
+  onClick={() => handleDelete(blog.id)}
+>
+  Delete
+</button>
+
                 <button
                   onClick={() => navigate(`/blogs/${blog.id}`)}
                   className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600"
