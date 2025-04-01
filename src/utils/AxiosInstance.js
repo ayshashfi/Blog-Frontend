@@ -3,7 +3,7 @@ import { refreshAccessToken, saveTokens, removeTokens, getRefreshToken } from '.
 
 const axiosInstance = axios.create({
   //baseURL: 'http://127.0.0.1:8000/api',
-  baseURL: 'https://16.171.35.135/api', // Your backend API URL
+  baseURL: 'https://cblo.shop/api', // Your backend API URL
   headers: {
     "Content-Type": "application/json",
   },
