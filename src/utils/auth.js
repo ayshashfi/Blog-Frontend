@@ -46,7 +46,7 @@ export const isAuthenticated = () => {
 // Login function: Authenticates the user and saves the tokens
 export const login = async (email, password) => {
   try {
-    const response = await axios.post("http://127.0.0.1:8000/api/users/token/", {
+    const response = await axios.post("https://127.0.0.1:8000/api/users/token/", {
       email,
       password,
     });
@@ -72,7 +72,7 @@ export const logout = () => {
 //Uses the refresh token to get a new access token from the backend.
 export const refreshAccessToken = async (refreshToken) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/users/token/refresh/', {
+    const response = await axios.post('https://127.0.0.1:8000/api/users/token/refresh/', {
       refresh: refreshToken,
     });
     const { access } = response.data; // Extract new access token from the response
